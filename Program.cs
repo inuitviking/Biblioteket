@@ -1,4 +1,5 @@
 ﻿using System;
+using Biblioteket.Classes;
 
 namespace Biblioteket
 {
@@ -6,7 +7,8 @@ namespace Biblioteket
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			Bibliotek bibliotek = new Bibliotek("Sønderborg bibliotek");
+			bibliotek.HentBibliotek();
 		}
 	}
 }
