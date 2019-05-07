@@ -43,11 +43,17 @@ namespace Biblioteket.Classes
 			It doesn't quite do as specified in the task (v3.4), which said to
 			"build a long string". I thought this solution below _might_ be a better
 			solution.
+			TODO: Change the comment
 		*/
-		public void HentAlleLaanere(){
+		public string HentAlleLaanere(){
+			string title = "\n++++ Alle Lånere ++++\n";
+			string bottom = "\n+++++++++++++++++++++";
+			string userList = "";
 			for (int i = 0; i < laanerList.Count; i++){
-				Console.WriteLine($"{i}: " + laanerList[i].LaanerNummer + " - " + laanerList[i].Navn);
+				userList += $"{i}: " + laanerList[i].LaanerNummer + " - " + laanerList[i].Navn + "\n";
 			}
+			string result = title + userList + bottom;
+			return result;
 		}
 
 		/*
