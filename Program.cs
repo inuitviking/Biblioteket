@@ -17,7 +17,6 @@ namespace Biblioteket
 
 			bibliotek.OpretLaaner("Hans Erik Jensen", laanere);
 			Console.WriteLine(bibliotek.HentLaaner());
-			
 
 		}
 	}
