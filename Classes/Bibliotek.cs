@@ -8,12 +8,14 @@ namespace Biblioteket.Classes
 	{
 		string biblioteksNavn;
 		Laaner laaner;
+		public List<Laaner> laanerList;
 
 		/*
 			This is the class constructor
 		*/
 		public Bibliotek(string navn){
 			this.biblioteksNavn = navn;
+			laanerList = new List<Laaner>();
 		} // End of Bibliotek
 
 		/*
@@ -31,12 +33,25 @@ namespace Biblioteket.Classes
 			subscribed to.
 		*/
 		public string HentLaaner(){
-			return "Lånernummer: " + laaner.LaanerNummer
-				+ " - Navn: " + laaner.Navn
+			return "Lånernummer: " + this.laaner.LaanerNummer
+				+ " - Navn: " + this.laaner.Navn
 				+ " er låner hos: " + this.biblioteksNavn;
 		} // End of HentLaaner
 
 		/*
+			This method gets all items in laanerList.
+			It doesn't quite do as specified in the task (v3.4), which said to
+			"build a long string". I thought this solution below _might_ be a better
+			solution.
+		*/
+		public void HentAlleLaanere(){
+			for (int i = 0; i < laanerList.Count; i++){
+				Console.WriteLine($"{i}: " + laanerList[i].LaanerNummer + " - " + laanerList[i].Navn);
+			}
+		}
+
+		/*
+			TODO: CHANGE THIS COMMENT
 			This method creates a laaner. It takes two paramters:
 				1. (string) navn
 				2. (List<Laaner>) laanerList
@@ -47,18 +62,21 @@ namespace Biblioteket.Classes
 			continues to loop until it gets a hexadecimal string
 			that doesn't match any laanerNummer in the list.
 		*/
-		public void OpretLaaner(string navn, List<Laaner> laanerList){
+		public string OpretLaaner(string navn){
 
 			bool laanerExists = true;
 			string newHexID;
 			do{
 				newHexID = RandomHex(8);
-				if(!Laaner.CheckLaanerExists(newHexID, laanerList)){
+				if(!Laaner.CheckLaanerExists(newHexID, this.laanerList)){
 					laanerExists = false;
 				}
 			}while(laanerExists);
 
-			laaner = new Laaner(navn, newHexID);
+			this.laaner = new Laaner(navn, newHexID);
+			this.laanerList.Add(this.laaner);
+
+			return $"Låner oprettet:\n    LaanerID:\t{newHexID}\n    Navn:\t{navn}";
 		}// End of OpretLaaner
 
 		/*
