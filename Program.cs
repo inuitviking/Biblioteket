@@ -1,4 +1,7 @@
-﻿using System;
+﻿using System.ComponentModel;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using Biblioteket.Classes;
 
 namespace Biblioteket
@@ -7,8 +10,14 @@ namespace Biblioteket
 	{
 		static void Main(string[] args)
 		{
-			Bibliotek bibliotek = new Bibliotek("Sønderborg bibliotek");
-			bibliotek.HentBibliotek();
+			List<Laaner> laanere = new List<Laaner>();
+
+			Bibliotek bibliotek = new Bibliotek("Sønderborg Bibliotek");
+			Console.WriteLine(bibliotek.HentBibliotek());
+
+			bibliotek.OpretLaaner("Hans Erik Jensen", laanere);
+			Console.WriteLine(bibliotek.HentLaaner());
+
 		}
 	}
 }

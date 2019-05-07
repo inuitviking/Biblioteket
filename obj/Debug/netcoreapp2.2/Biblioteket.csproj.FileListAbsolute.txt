@@ -1,0 +1,11 @@
+/home/ch/Desktop/Skúli/Biblioteket/obj/Debug/netcoreapp2.2/Biblioteket.csprojAssemblyReference.cache
+/home/ch/Desktop/Skúli/Biblioteket/obj/Debug/netcoreapp2.2/Biblioteket.csproj.CoreCompileInputs.cache
+/home/ch/Desktop/Skúli/Biblioteket/obj/Debug/netcoreapp2.2/Biblioteket.AssemblyInfoInputs.cache
+/home/ch/Desktop/Skúli/Biblioteket/obj/Debug/netcoreapp2.2/Biblioteket.AssemblyInfo.cs
+/home/ch/Desktop/Skúli/Biblioteket/bin/Debug/netcoreapp2.2/Biblioteket.deps.json
+/home/ch/Desktop/Skúli/Biblioteket/bin/Debug/netcoreapp2.2/Biblioteket.runtimeconfig.json
+/home/ch/Desktop/Skúli/Biblioteket/bin/Debug/netcoreapp2.2/Biblioteket.runtimeconfig.dev.json
+/home/ch/Desktop/Skúli/Biblioteket/bin/Debug/netcoreapp2.2/Biblioteket.dll
+/home/ch/Desktop/Skúli/Biblioteket/bin/Debug/netcoreapp2.2/Biblioteket.pdb
+/home/ch/Desktop/Skúli/Biblioteket/obj/Debug/netcoreapp2.2/Biblioteket.dll
+/home/ch/Desktop/Skúli/Biblioteket/obj/Debug/netcoreapp2.2/Biblioteket.pdb
