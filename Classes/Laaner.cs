@@ -52,14 +52,29 @@ namespace Biblioteket.Classes
 			return exists;
 		} // End of CheckLaanerExists
 
+		public static bool CheckLaanerExistsEmail(string email, List<Laaner> laanere){
+			bool exists = false;
+			if(laanere.Where(x => x.Email.Contains(email)).Any()){
+				exists = true;
+			}
+			return exists;
+		}
+
 		public static Laaner ReturnLaaner(List<Laaner> laanere){
 			Laaner item = laanere[laanere.Count - 1];
 			return item;
 		}
 
-		public static Laaner ReturnLaaner(string hexID,List<Laaner> laanere){
-			Laaner item = laanere.Where(x => x.laanerNummer.Contains(hexID)).FirstOrDefault();
-			return item;
+		public static Laaner ReturnLaaner(string searchParam,List<Laaner> laanere){
+			if(Laaner.CheckLaanerExists(searchParam, laanere)){
+				Laaner item = laanere.Where(x => x.laanerNummer.Contains(searchParam)).FirstOrDefault();
+				return item;
+			}else if(Laaner.CheckLaanerExistsEmail(searchParam, laanere)){
+				Laaner item = laanere.Where(x => x.Email.Contains(searchParam)).FirstOrDefault();
+				return item;
+			}else{
+				throw new ArgumentException("FUCK");
+			}
 		}
 
 	}

@@ -64,8 +64,8 @@ namespace Biblioteket
 						result = 'U';
 						quit = true;
 						break;
-					case ConsoleKey.H:
-						result = 'H';
+					case ConsoleKey.F:
+						result = 'F';
 						quit = true;
 						break;
 					case ConsoleKey.X:
@@ -118,8 +118,8 @@ namespace Biblioteket
 					Console.WriteLine("\n\nTryk på en vilkårlig knap for at fortsætte.");
 					Console.ReadKey();
 					break;
-				case 'H':
-					ClearCurrentConsoleLine();
+				case 'F':
+					Console.Write("Skriv ID eller Email: ");
 					Console.WriteLine(bibliotek.HentLaaner(Console.ReadLine()));
 					Console.WriteLine("\n\nTryk på en vilkårlig knap for at fortsætte.");
 					Console.ReadKey();

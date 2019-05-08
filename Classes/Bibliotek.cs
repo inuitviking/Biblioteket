@@ -42,20 +42,35 @@ namespace Biblioteket.Classes
 		/// <returns>Lånernummer: {laanerNummer} - Navn: {navn} er låner hos: {biblioteksNavn}</returns>
 		public string HentLaaner(){
 			return "Lånernummer: " + this.laaner.LaanerNummer
+				+ " - Email: " + this.Email
 				+ " - Navn: " + this.laaner.Navn
 				+ " er låner hos: " + this.biblioteksNavn;
 		}
 
-		public string HentLaaner(string laanerHex){
+		/// <summary>
+		/// 	HentLaaner(string) returns a searched for element in this.laanerList.
+		/// 	This parameter can be either the hexadecimal string or the email,
+		/// 	never the name.
+		/// 	If the search comes out false, then a string is returned, telling
+		/// 	the user that the "laaner with the criteria doesn't exist".
+		///
+		/// 	Also, apparently this was supposed to be "FindLaaner", but I accidentally
+		/// 	created an overloader for HentLaaner; I thought it made sense.
+		/// </summary>
+		/// <param name="searchParam"></param>
+		/// <returns></returns>
+		public string HentLaaner(string searchParam){
 			string result = "";
-			if(Laaner.CheckLaanerExists(laanerHex, this.laanerList)){
-				Laaner laanerIndividual = Laaner.ReturnLaaner(laanerHex, this.laanerList);
+			if((Laaner.CheckLaanerExists(searchParam, this.laanerList))
+				||
+				(Laaner.CheckLaanerExistsEmail(searchParam, this.laanerList))){
+				Laaner laanerIndividual = Laaner.ReturnLaaner(searchParam, this.laanerList);
 				string id = laanerIndividual.LaanerNummer + "\n";
 				string navn = laanerIndividual.Navn + "\n";
 				string email = laanerIndividual.Email;
 				result = id + navn + email;
 			}else{
-				result = $"Låneren med ID-{laanerHex} eksisterer ikke.";
+				result = $"Låneren med søgekriterie \"{searchParam}\" eksisterer ikke.";
 			}
 			return result;
 		}
@@ -70,7 +85,7 @@ namespace Biblioteket.Classes
 			string bottom = "\n+++++++++++++++++++++";
 			string userList = "";
 			for (int i = 0; i < laanerList.Count; i++){
-				userList += $"{i}: " + laanerList[i].LaanerNummer + " - " + laanerList[i].Navn + "\n";
+				userList += $"{i}: " + laanerList[i].LaanerNummer + " - " + laanerList[i].Navn + " - " + laanerList[i].Email + "\n";
 			}
 			string result = title + userList + bottom;
 			return result;
@@ -78,7 +93,8 @@ namespace Biblioteket.Classes
 
 		/// <summary>
 		/// 	OpretLaaner creates a laaner and returns a string
-		///		containing laanerNummer and navn.
+		///		containing laanerNummer, navn, and email.
+		///
 		///		It uses RandomHex method to generate an 8 character
 		///		hexadecimal string, and then checks if that string
 		///		exists within the laanerList. If it does, it
@@ -87,24 +103,38 @@ namespace Biblioteket.Classes
 		///		The unfortunate thing, is that this isn't future
 		///		proof; it can only contain 2048 users, but I think
 		/// 	this is good enough to show an example.
+		///
+		/// 	It also checks whether the email exists, and if so
+		/// 	it returns "Email already exists".
 		/// </summary>
 		/// <param name="navn"></param>
-		/// <returns>Låner oprettet:\n    LaanerID:\t{newHexID}\n    Navn:\t{navn}</returns>
+		/// <returns>{result}</returns>
 		public string OpretLaaner(string navn, string email){
 
-			bool laanerExists = true;
+			bool hexExists = true;
+			bool emailExists = true;
 			string newHexID;
+			string result= "";
 			do{
 				newHexID = RandomHex(8);
 				if(!Laaner.CheckLaanerExists(newHexID, this.laanerList)){
-					laanerExists = false;
+					hexExists = false;
 				}
-			}while(laanerExists);
+			}while(hexExists);
 
-			this.laaner = new Laaner(navn, email, newHexID);
-			this.laanerList.Add(this.laaner);
+			if(!Laaner.CheckLaanerExistsEmail(email,this.laanerList)){
+				emailExists = false;
+			}else{
+				result = "Emailen eksisterer allerede!";
+			}
 
-			return $"Låner oprettet:\n    LaanerID:\t{newHexID}\n    Navn:\t{navn}\n    Email:\t{email}";
+			if(!hexExists && !emailExists){
+				this.laaner = new Laaner(navn, email, newHexID);
+				this.laanerList.Add(this.laaner);
+				result = $"Låner oprettet:\n    LaanerID:\t{newHexID}\n    Navn:\t{navn}\n    Email:\t{email}";
+			}
+
+			return result;
 		}// End of OpretLaaner
 
 		/// <summary>
