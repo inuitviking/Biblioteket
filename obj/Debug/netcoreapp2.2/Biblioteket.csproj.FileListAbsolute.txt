@@ -9,3 +9,14 @@
 /home/ch/Desktop/Skúli/Biblioteket/bin/Debug/netcoreapp2.2/Biblioteket.pdb
 /home/ch/Desktop/Skúli/Biblioteket/obj/Debug/netcoreapp2.2/Biblioteket.dll
 /home/ch/Desktop/Skúli/Biblioteket/obj/Debug/netcoreapp2.2/Biblioteket.pdb
+/home/angus/Desktop/Skúli/Biblioteket/obj/Debug/netcoreapp2.2/Biblioteket.csprojAssemblyReference.cache
+/home/angus/Desktop/Skúli/Biblioteket/obj/Debug/netcoreapp2.2/Biblioteket.csproj.CoreCompileInputs.cache
+/home/angus/Desktop/Skúli/Biblioteket/obj/Debug/netcoreapp2.2/Biblioteket.AssemblyInfoInputs.cache
+/home/angus/Desktop/Skúli/Biblioteket/obj/Debug/netcoreapp2.2/Biblioteket.AssemblyInfo.cs
+/home/angus/Desktop/Skúli/Biblioteket/obj/Debug/netcoreapp2.2/Biblioteket.dll
+/home/angus/Desktop/Skúli/Biblioteket/obj/Debug/netcoreapp2.2/Biblioteket.pdb
+/home/angus/Desktop/Skúli/Biblioteket/bin/Debug/netcoreapp2.2/Biblioteket.deps.json
+/home/angus/Desktop/Skúli/Biblioteket/bin/Debug/netcoreapp2.2/Biblioteket.runtimeconfig.json
+/home/angus/Desktop/Skúli/Biblioteket/bin/Debug/netcoreapp2.2/Biblioteket.runtimeconfig.dev.json
+/home/angus/Desktop/Skúli/Biblioteket/bin/Debug/netcoreapp2.2/Biblioteket.dll
+/home/angus/Desktop/Skúli/Biblioteket/bin/Debug/netcoreapp2.2/Biblioteket.pdb

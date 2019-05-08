@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "/home/ch/Desktop/Skúli/Biblioteket/Biblioteket.csproj": {}
+    "/home/angus/Desktop/Skúli/Biblioteket/Biblioteket.csproj": {}
   },
   "projects": {
-    "/home/ch/Desktop/Skúli/Biblioteket/Biblioteket.csproj": {
+    "/home/angus/Desktop/Skúli/Biblioteket/Biblioteket.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ch/Desktop/Skúli/Biblioteket/Biblioteket.csproj",
+        "projectUniqueName": "/home/angus/Desktop/Skúli/Biblioteket/Biblioteket.csproj",
         "projectName": "Biblioteket",
-        "projectPath": "/home/ch/Desktop/Skúli/Biblioteket/Biblioteket.csproj",
-        "packagesPath": "/home/ch/.nuget/packages/",
-        "outputPath": "/home/ch/Desktop/Skúli/Biblioteket/obj/",
+        "projectPath": "/home/angus/Desktop/Skúli/Biblioteket/Biblioteket.csproj",
+        "packagesPath": "/home/angus/.nuget/packages/",
+        "outputPath": "/home/angus/Desktop/Skúli/Biblioteket/obj/",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "/usr/share/dotnet/sdk/NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "/home/ch/.nuget/NuGet/NuGet.Config"
+          "/home/angus/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"

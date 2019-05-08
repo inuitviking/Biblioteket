@@ -9,6 +9,7 @@ namespace Biblioteket.Classes
 		string biblioteksNavn;
 		Laaner laaner;
 		public List<Laaner> laanerList;
+		public List<Bog> bogList;
 
 		/// <summary>
 		/// 	This is the class constructor.
@@ -21,6 +22,7 @@ namespace Biblioteket.Classes
 		public Bibliotek(string navn){
 			this.biblioteksNavn = navn;
 			laanerList = new List<Laaner>();
+			bogList = new List<Bog>();
 		} // End of Bibliotek
 
 		/// <summary>
@@ -37,13 +39,15 @@ namespace Biblioteket.Classes
 		/// <summary>
 		/// 	HentLaaner displays laanerNummer, laaner navn, and which library the laaner is
 		///		subscribed to.
-		/// 	Currently, this just returns the last value in laanerList
+		/// 	Since nothing is defined, it gets the last laaner from the list.
+		/// 	It doesn't check whether the list is empty or not.
 		/// </summary>
 		/// <returns>Lånernummer: {laanerNummer} - Navn: {navn} er låner hos: {biblioteksNavn}</returns>
 		public string HentLaaner(){
-			return "Lånernummer: " + this.laaner.LaanerNummer
-				+ " - Email: " + this.Email
-				+ " - Navn: " + this.laaner.Navn
+			Laaner item = laanerList[laanerList.Count - 1];
+			return "Lånernummer: " + item.LaanerNummer
+				+ " - Email: " + item.Email
+				+ " - Navn: " + item.Navn
 				+ " er låner hos: " + this.biblioteksNavn;
 		}
 
