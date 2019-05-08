@@ -67,6 +67,12 @@ namespace Biblioteket.Classes
 			ISBN = ISBNID;
 		}// end of Bog
 
+		/// <summary>
+		/// 	CheckBookExists checks if a book exists based on the ISBN number
+		/// </summary>
+		/// <param name="ISBNID"></param>
+		/// <param name="bogList"></param>
+		/// <returns>bool</returns>
 		public static bool CheckBookExists(string ISBNID, List<Bog> bogList){
 			bool exists = false;
 			if(bogList.Where(x => x.ISBN.Contains(ISBNID)).Any()){
@@ -75,6 +81,12 @@ namespace Biblioteket.Classes
 			return exists;
 		}
 
+		/// <summary>
+		/// 	ReturnBog(string,List<Bog>) returns a Bog Object from a specified Bog List.
+		/// </summary>
+		/// <param name="searchParam"></param>
+		/// <param name="bogList"></param>
+		/// <returns>Bog</returns>
 		public static Bog ReturnBog(string searchParam,List<Bog> bogList){
 			if(Bog.CheckBookExists(searchParam, bogList)){
 				Bog item = bogList.Where(x => x.ISBN.Contains(searchParam)).FirstOrDefault();
