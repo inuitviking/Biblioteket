@@ -44,7 +44,7 @@ namespace Biblioteket
 					"v: Vis bibliotekekts navn og dato\n"+
 					"o: Opret låner\n"+
 					"u: Udskriv lånere\n"+
-					"h: Find låner på ID\n"+
+					"f: Find låner på ID\n"+
 					"x: Afslut\n"+
 					lines
 				);
