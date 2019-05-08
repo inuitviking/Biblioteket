@@ -11,10 +11,11 @@ namespace Biblioteket.Classes
 		string laanerNummer; // will be a hexadecimal number for fancyness
 		string navn;
 
-		/*
-			Gets the field laanerNummer.
-			Set is private, since it will only be used within the class in the constructor.
-		*/
+		/// <summary>
+		/// 	LaanerNummer acts as a getter and setter for this.laanerNummer.
+		/// 	The setter is private, as it will only be used within this class
+		/// </summary>
+		/// <value>{string}</value>
 		public string LaanerNummer{
 			get{
 				return this.laanerNummer;
@@ -22,12 +23,12 @@ namespace Biblioteket.Classes
 			set{
 				this.laanerNummer = value;
 			}
-		}
+		}// end of LaanerNummer
 
-		/*
-			Gets the field navn.
-			Set is private, so that it can only be used within this class
-		*/
+		/// <summary>
+		/// 	Navn acts as a getter and setter for this.navn.
+		/// </summary>
+		/// <value>{string}</value>
 		public string Navn{
 			get{
 				return this.navn;
@@ -35,26 +36,29 @@ namespace Biblioteket.Classes
 			set{
 				this.navn = value;
 			}
-		}
+		}// End of Navn
 
 		/*
 			This is the class constructor.
 		*/
+		/// <summary>
+		/// 	This is the constructor.
+		/// 	It sets this.laanerNummer and this.navn through their setters
+		/// </summary>
+		/// <param name="navn"></param>
+		/// <param name="laanerNummer"></param>
 		public Laaner(string navn, string laanerNummer){
 			LaanerNummer = laanerNummer;
 			Navn = navn;
 		} // End of Laaner
 
-		/*
-			This method checks if a Laaner exists.
-			It takes two parameters:
-				1. string
-				2. List<Laaner>
-
-			It checks whether the string (which is an eight character hexadecimal
-			number) exists wihin the list. If it exists, it returns true, but
-			false otherwise.
-		*/
+		/// <summary>
+		/// 	CheckLaanerExists checks on a hexadecimal string if an item in the
+		/// 	defined list exists.
+		/// </summary>
+		/// <param name="newHexID"></param>
+		/// <param name="laanere"></param>
+		/// <returns>bool</returns>
 		public static bool CheckLaanerExists(string newHexID, List<Laaner> laanere){
 			bool exists = false;
 			if(laanere.Where(w => w.laanerNummer.Contains(newHexID)).Any()){
