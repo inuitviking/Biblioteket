@@ -22,6 +22,12 @@ namespace Biblioteket
 
 		}
 
+		/// <summary>
+		/// 	Menu displays a string containing instructions to the user, so they can
+		/// 	navigate the program. It listens for key presses from the user, and
+		/// 	checks if the keypresses are the correct keys.
+		/// </summary>
+		/// <returns>{Char}</returns>
 		static Char Menu(){
 
 			// Exactly 26 characters long (or so I beleive)
@@ -70,8 +76,15 @@ namespace Biblioteket
 			} while (!quit);
 
 			return result;
-		}
+		} // End of Menu class
 
+		/// <summary>
+		/// 	MenuItem writes the appropriate things according to Char menuItem.
+		/// 	It also needs to know which Bibliotek to it needs to use (even if
+		/// 	there is only one).
+		/// </summary>
+		/// <param name="menuItem"></param>
+		/// <param name="bibliotek"></param>
 		static void MenuItem(Char menuItem, Bibliotek bibliotek){
 			switch (menuItem){
 				case 'V':
@@ -97,9 +110,13 @@ namespace Biblioteket
 					Environment.Exit(0);
 					break;
 			}
-		}
+		}// end of MenuItem
 
-		// https://stackoverflow.com/questions/8946808/can-console-clear-be-used-to-only-clear-a-line-instead-of-whole-console
+		/// <summary>
+		/// 	https://stackoverflow.com/questions/8946808/can-console-clear-be-used-to-only-clear-a-line-instead-of-whole-console
+		/// 	ClearCurrentConsoleLine moves Console.CursorLeft to 0 on the current line
+		/// 	and writes spaces to it to overwrite the line's contents
+		/// </summary>
 		public static void ClearCurrentConsoleLine(){
 			//Variable that holds the current line
 			int currentLineCursor = Console.CursorTop;
@@ -109,6 +126,6 @@ namespace Biblioteket
 			Console.Write(new string(' ', Console.WindowWidth));
 			//Sets cursor position
 			Console.SetCursorPosition(0, currentLineCursor);
-		}
+		}// End of ClearCurrentConsoleLine
 	}
 }
