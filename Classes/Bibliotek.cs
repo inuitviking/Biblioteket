@@ -44,7 +44,21 @@ namespace Biblioteket.Classes
 			return "Lånernummer: " + this.laaner.LaanerNummer
 				+ " - Navn: " + this.laaner.Navn
 				+ " er låner hos: " + this.biblioteksNavn;
-		} // End of HentLaaner
+		}
+
+		public string HentLaaner(string laanerHex){
+			string result = "";
+			if(Laaner.CheckLaanerExists(laanerHex, this.laanerList)){
+				Laaner laanerIndividual = Laaner.ReturnLaaner(laanerHex, this.laanerList);
+				string id = laanerIndividual.LaanerNummer + "\n";
+				string navn = laanerIndividual.Navn + "\n";
+				string email = laanerIndividual.Email;
+				result = id + navn + email;
+			}else{
+				result = $"Låneren med ID-{laanerHex} eksisterer ikke.";
+			}
+			return result;
+		}
 
 		/// <summary>
 		/// 	HentAlleLaanere returns one long string containing all laanere
@@ -76,7 +90,7 @@ namespace Biblioteket.Classes
 		/// </summary>
 		/// <param name="navn"></param>
 		/// <returns>Låner oprettet:\n    LaanerID:\t{newHexID}\n    Navn:\t{navn}</returns>
-		public string OpretLaaner(string navn){
+		public string OpretLaaner(string navn, string email){
 
 			bool laanerExists = true;
 			string newHexID;
@@ -87,10 +101,10 @@ namespace Biblioteket.Classes
 				}
 			}while(laanerExists);
 
-			this.laaner = new Laaner(navn, newHexID);
+			this.laaner = new Laaner(navn, email, newHexID);
 			this.laanerList.Add(this.laaner);
 
-			return $"Låner oprettet:\n    LaanerID:\t{newHexID}\n    Navn:\t{navn}";
+			return $"Låner oprettet:\n    LaanerID:\t{newHexID}\n    Navn:\t{navn}\n    Email:\t{email}";
 		}// End of OpretLaaner
 
 		/// <summary>

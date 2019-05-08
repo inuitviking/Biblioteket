@@ -30,6 +30,7 @@ namespace Biblioteket
 		/// <returns>{Char}</returns>
 		static Char Menu(){
 
+			Console.Clear();
 			// Exactly 26 characters long (or so I beleive)
 			string lines = "--------------------------";
 			ConsoleKeyInfo keyInfo;
@@ -43,6 +44,7 @@ namespace Biblioteket
 					"v: Vis bibliotekekts navn og dato\n"+
 					"o: Opret låner\n"+
 					"u: Udskriv lånere\n"+
+					"h: Find låner på ID\n"+
 					"x: Afslut\n"+
 					lines
 				);
@@ -62,6 +64,10 @@ namespace Biblioteket
 						result = 'U';
 						quit = true;
 						break;
+					case ConsoleKey.H:
+						result = 'H';
+						quit = true;
+						break;
 					case ConsoleKey.X:
 						result = 'X';
 						quit = true;
@@ -69,7 +75,6 @@ namespace Biblioteket
 					default:
 						ClearCurrentConsoleLine();
 						Console.WriteLine("\nDet var vist ikke en mulighed på menuen.");
-						Thread.Sleep(2000);
 						break;
 				}
 
@@ -86,24 +91,38 @@ namespace Biblioteket
 		/// <param name="menuItem"></param>
 		/// <param name="bibliotek"></param>
 		static void MenuItem(Char menuItem, Bibliotek bibliotek){
+			Console.Clear();
 			switch (menuItem){
 				case 'V':
 					ClearCurrentConsoleLine();
 					Console.WriteLine("\n");
 					Console.WriteLine(bibliotek.HentBibliotek());
-					Thread.Sleep(2000);
+					Console.WriteLine("\n\nTryk på en vilkårlig knap for at fortsætte.");
+					Console.ReadKey();
 					break;
 				case 'O':
 					ClearCurrentConsoleLine();
 					Console.WriteLine("\n");
 					Console.Write("Fulde navn: ");
-					Console.WriteLine(bibliotek.OpretLaaner(Console.ReadLine()));
-					Thread.Sleep(2000);
+					string newLaanerNavn = Console.ReadLine();
+					Console.Write("Email: ");
+					string newLaanerEmail = Console.ReadLine();
+					Console.WriteLine("---");
+					Console.WriteLine(bibliotek.OpretLaaner(newLaanerNavn, newLaanerEmail));
+					Console.WriteLine("\n\nTryk på en vilkårlig knap for at fortsætte.");
+					Console.ReadKey();
 					break;
 				case 'U':
 					ClearCurrentConsoleLine();
 					Console.WriteLine(bibliotek.HentAlleLaanere());
-					Thread.Sleep(2000);
+					Console.WriteLine("\n\nTryk på en vilkårlig knap for at fortsætte.");
+					Console.ReadKey();
+					break;
+				case 'H':
+					ClearCurrentConsoleLine();
+					Console.WriteLine(bibliotek.HentLaaner(Console.ReadLine()));
+					Console.WriteLine("\n\nTryk på en vilkårlig knap for at fortsætte.");
+					Console.ReadKey();
 					break;
 				case 'X':
 					Console.Clear();
