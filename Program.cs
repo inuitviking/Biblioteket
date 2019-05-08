@@ -44,7 +44,8 @@ namespace Biblioteket
 					"v: Vis bibliotekekts navn og dato\n"+
 					"o: Opret låner\n"+
 					"u: Udskriv lånere\n"+
-					"f: Find låner på ID\n"+
+					"f: Find låner\n"+
+					"h: Find sidst oprtettede låner\n"+
 					"x: Afslut\n"+
 					lines
 				);
@@ -66,6 +67,10 @@ namespace Biblioteket
 						break;
 					case ConsoleKey.F:
 						result = 'F';
+						quit = true;
+						break;
+					case ConsoleKey.H:
+						result = 'H';
 						quit = true;
 						break;
 					case ConsoleKey.X:
@@ -94,14 +99,12 @@ namespace Biblioteket
 			Console.Clear();
 			switch (menuItem){
 				case 'V':
-					ClearCurrentConsoleLine();
 					Console.WriteLine("\n");
 					Console.WriteLine(bibliotek.HentBibliotek());
 					Console.WriteLine("\n\nTryk på en vilkårlig knap for at fortsætte.");
 					Console.ReadKey();
 					break;
 				case 'O':
-					ClearCurrentConsoleLine();
 					Console.WriteLine("\n");
 					Console.Write("Fulde navn: ");
 					string newLaanerNavn = Console.ReadLine();
@@ -113,7 +116,6 @@ namespace Biblioteket
 					Console.ReadKey();
 					break;
 				case 'U':
-					ClearCurrentConsoleLine();
 					Console.WriteLine(bibliotek.HentAlleLaanere());
 					Console.WriteLine("\n\nTryk på en vilkårlig knap for at fortsætte.");
 					Console.ReadKey();
@@ -130,21 +132,5 @@ namespace Biblioteket
 					break;
 			}
 		}// end of MenuItem
-
-		/// <summary>
-		/// 	https://stackoverflow.com/questions/8946808/can-console-clear-be-used-to-only-clear-a-line-instead-of-whole-console
-		/// 	ClearCurrentConsoleLine moves Console.CursorLeft to 0 on the current line
-		/// 	and writes spaces to it to overwrite the line's contents
-		/// </summary>
-		public static void ClearCurrentConsoleLine(){
-			//Variable that holds the current line
-			int currentLineCursor = Console.CursorTop;
-			//Sets cursor position
-			Console.SetCursorPosition(0, Console.CursorTop);
-			//Replaces line content with a space
-			Console.Write(new string(' ', Console.WindowWidth));
-			//Sets cursor position
-			Console.SetCursorPosition(0, currentLineCursor);
-		}// End of ClearCurrentConsoleLine
 	}
 }
