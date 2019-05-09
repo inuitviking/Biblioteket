@@ -108,11 +108,17 @@ namespace Biblioteket.Classes
 		/// <param name="book"></param>
 		/// <returns>string</returns>
 		public string LaanBog(Bog book){
-			book.UdlaansDato = DateTime.Now;
-			book.UdloebsDato = DateTime.Now.AddDays(30);
-			laanteBoegerList.Add(book);
-			string title = book.Titel;
-			return $"{Navn} ({LaanerNummer}) har lånt bogen {title}";
+
+			if(book.Udlaant == false){
+				book.UdlaansDato = DateTime.Now;
+				book.UdloebsDato = DateTime.Now.AddDays(30);
+				book.Udlaant = true;
+				laanteBoegerList.Add(book);
+				string title = book.Titel;
+				return $"{Navn} ({LaanerNummer}) har lånt bogen {title}";
+			}else{
+				return "Bogen er allerede udlånt!";
+			}
 		}
 
 		/// <summary>

@@ -9,6 +9,7 @@ namespace Biblioteket.Classes
 	public class Bog
 	{
 		string titel, forfatter;
+		bool udlaant;
 		DateTime udlaansDato, udloebsDato;
 
 		// A book has to have a title
@@ -28,6 +29,16 @@ namespace Biblioteket.Classes
 			}
 			set{
 				this.forfatter = value;
+			}
+		}
+
+		// We also want to check if the book has been rented or not.
+		public bool Udlaant{
+			get{
+				return this.udlaant;
+			}
+			set{
+				this.udlaant = value;
 			}
 		}
 
@@ -65,6 +76,7 @@ namespace Biblioteket.Classes
 			Titel = bookTitle;
 			Forfatter = author;
 			ISBN = ISBNID;
+			Udlaant = false;
 		}// end of Bog
 
 		/// <summary>

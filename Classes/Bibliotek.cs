@@ -159,5 +159,16 @@ namespace Biblioteket.Classes
 				return result;
 			return result + random.Next(16).ToString("X");
 		} // End of RandomHex
+
+		public string HentAlleBoeger(){
+			string title = "\n++++ Alle Bøger ++++\n";
+			string bottom = "\n+++++++++++++++++++++";
+			string boeger = "";
+			for (int i = 0; i < bogList.Count; i++){
+				boeger += $"{i}: " + bogList[i].ISBN + " - " + bogList[i].Titel + " - " + bogList[i].Forfatter + "\n";
+			}
+			string result = title + boeger + bottom;
+			return result;
+		}
 	}
 }

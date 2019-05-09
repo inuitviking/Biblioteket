@@ -49,6 +49,7 @@ namespace Biblioteket
 					"f: Udlån en bog\n"+
 					"g: Opret bog\n"+
 					"h: Vis liste over lånte bøger på bruger\n"+
+					"i: Udskriv bøger\n"+
 					"x: Afslut\n"+
 					lines
 				);
@@ -86,6 +87,10 @@ namespace Biblioteket
 						break;
 					case ConsoleKey.H:
 						result = 'H';
+						quit = true;
+						break;
+					case ConsoleKey.I:
+						result = 'I';
 						quit = true;
 						break;
 					case ConsoleKey.X:
@@ -141,7 +146,7 @@ namespace Biblioteket
 					Console.Write("Skriv ISBN: ");
 					string ISBNNumber = Console.ReadLine();
 					Bog foundBog = Bog.ReturnBog(ISBNNumber, bibliotek.bogList);
-					foundLaaner.LaanBog(foundBog);
+					Console.WriteLine(foundLaaner.LaanBog(foundBog));
 					break;
 				case 'G':
 					Console.Write("Titel: ");
@@ -159,6 +164,9 @@ namespace Biblioteket
 					searchString = Console.ReadLine();
 					foundLaaner = Laaner.ReturnLaaner(searchString, bibliotek.laanerList);
 					Console.WriteLine(foundLaaner.ListLaanteBoeger());
+					break;
+				case 'I':
+					Console.WriteLine(bibliotek.HentAlleBoeger());
 					break;
 				case 'X':
 					Console.Clear();
