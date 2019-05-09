@@ -8,10 +8,27 @@ namespace Biblioteket.Classes
 {
 	public class Bog
 	{
-		string titel, forfatter, kategori;
-		bool udlaant;
+		string titel, forfatter, kategori, reserveretTil;
+		bool udlaant, reserveret;
 		DateTime udlaansDato, udloebsDato;
 
+		public bool Reserveret{
+			get{
+				return this.reserveret;
+			}
+			set{
+				this.reserveret = value;
+			}
+		}
+
+		public string ReserveretTil{
+			get{
+				return this.reserveretTil;
+			}
+			set{
+				this.reserveretTil = value;
+			}
+		}
 		// A book has to have a title
 		public string Titel{
 			get{
@@ -86,6 +103,7 @@ namespace Biblioteket.Classes
 			Forfatter = author;
 			ISBN = ISBNID;
 			Udlaant = false;
+			Reserveret = false;
 		}// end of Bog
 
 		/// <summary>
@@ -115,6 +133,19 @@ namespace Biblioteket.Classes
 			}else{
 				throw new ArgumentException("Couldn't return bog: Returnbog(string,List<Bog>)");
 			}
+		}
+
+		public string ReserverBog(string hexID, List<Laaner> laanerList){
+			string result = "";
+			if(Reserveret == false){
+				Laaner laaner = Laaner.ReturnLaaner(hexID, laanerList);
+				Reserveret = true;
+				ReserveretTil = laaner.LaanerNummer;
+				result = $"Bogen \"{this.Titel}\" er reserveret til {laaner.Navn}(ID:{laaner.LaanerNummer})";
+			}else{
+				result = $"Bogen \"{this.Titel}\" er allerede reserveret til en anden";
+			}
+			return result;
 		}
 
 	}

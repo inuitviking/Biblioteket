@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,6 +52,7 @@ namespace Biblioteket
 					"j: Opret kategori\n"+
 					"k: Udskriv kategorier\n"+
 					"l: Find kategori\n"+
+					"m: Reserver bog til låner\n"+
 					"x: Afslut\n"+
 					lines
 				);
@@ -106,6 +106,10 @@ namespace Biblioteket
 						break;
 					case ConsoleKey.L:
 						result = 'L';
+						quit = true;
+						break;
+					case ConsoleKey.M:
+						result = 'M';
 						quit = true;
 						break;
 					case ConsoleKey.X:
@@ -195,6 +199,14 @@ namespace Biblioteket
 					Console.Write("Skriv kategorinavn: ");
 					kategoriNavn = Console.ReadLine();
 					Console.WriteLine(bibliotek.HentKategori(kategoriNavn));
+					break;
+				case 'M':
+					Console.Write("Skriv ID eller Email: ");
+					searchString = Console.ReadLine();
+					Console.Write("Skriv ISBN: ");
+					ISBNNumber = Console.ReadLine();
+					foundBog = Bog.ReturnBog(ISBNNumber, bibliotek.bogList);
+					Console.WriteLine(foundBog.ReserverBog(searchString,bibliotek.laanerList));
 					break;
 				case 'X':
 					Console.Clear();
