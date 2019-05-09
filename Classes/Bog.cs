@@ -118,7 +118,7 @@ namespace Biblioteket.Classes
 				exists = true;
 			}
 			return exists;
-		}
+		}// end of CheckBookExists
 
 		/// <summary>
 		/// 	ReturnBog(string,List<Bog>) returns a Bog Object from a specified Bog List.
@@ -133,8 +133,15 @@ namespace Biblioteket.Classes
 			}else{
 				throw new ArgumentException("Couldn't return bog: Returnbog(string,List<Bog>)");
 			}
-		}
+		}// End of ReturnBog
 
+		/// <summary>
+		/// 	ReserverBog returns a string telling the user that the reservet field is set to true, or
+		/// 	if already true, tells the user that
+		/// </summary>
+		/// <param name="hexID"></param>
+		/// <param name="laanerList"></param>
+		/// <returns>string</returns>
 		public string ReserverBog(string hexID, List<Laaner> laanerList){
 			string result = "";
 			if(Reserveret == false){
@@ -146,7 +153,7 @@ namespace Biblioteket.Classes
 				result = $"Bogen \"{this.Titel}\" er allerede reserveret til en anden";
 			}
 			return result;
-		}
+		}// End of ReserverBog
 
 	}
 }

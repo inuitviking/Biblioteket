@@ -143,6 +143,11 @@ namespace Biblioteket.Classes
 			return result;
 		}// End of OpretLaaner
 
+		/// <summary>
+		/// 	OpretKategori creates a new Categories object.
+		/// </summary>
+		/// <param name="categoryName"></param>
+		/// <returns>string</returns>
 		public string OpretKategori(string categoryName){
 			string result = "";
 			if(!Categories.CheckCategoryExists(categoryName, this.kategoriList)){
@@ -152,7 +157,7 @@ namespace Biblioteket.Classes
 				result = "Kategorien eksisterer allerede!";
 			}
 			return result;
-		}
+		}//End of OpretKategori
 
 		/// <summary>
 		/// 	RandomHex creates a random hexadecimal string in a defined number of characters.
@@ -173,6 +178,10 @@ namespace Biblioteket.Classes
 			return result + random.Next(16).ToString("X");
 		} // End of RandomHex
 
+		/// <summary>
+		/// 	HentAlleBoeger() displays a list of all Bog objects.
+		/// </summary>
+		/// <returns>string</returns>
 		public string HentAlleBoeger(){
 			string title = "\n++++ Alle Bøger ++++\n";
 			string bottom = "\n+++++++++++++++++++++";
@@ -182,8 +191,12 @@ namespace Biblioteket.Classes
 			}
 			string result = title + boeger + bottom;
 			return result;
-		}
+		}// end of HentAlleBoeger
 
+		/// <summary>
+		/// 	HentAlleKategorier() returns alle Categories objects.
+		/// </summary>
+		/// <returns>string</returns>
 		public string HentAlleKategorier(){
 			string title = "\n++++ Alle Kategorier ++++\n";
 			string bottom = "\n+++++++++++++++++++++";
@@ -193,8 +206,15 @@ namespace Biblioteket.Classes
 			}
 			string result = title + kategorier + bottom;
 			return result;
-		}
+		}// end of
 
+		/// <summary>
+		/// 	HentKategori(string) takes a string parameter and utilises it to search for
+		/// 	that specific string in bibliotek.kategoriList, and resturns the first
+		/// 	item in that list that matches.
+		/// </summary>
+		/// <param name="searchParam"></param>
+		/// <returns>string</returns>
 		public string HentKategori(string searchParam){
 			string result = "";
 
