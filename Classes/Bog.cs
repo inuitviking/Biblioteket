@@ -8,7 +8,7 @@ namespace Biblioteket.Classes
 {
 	public class Bog
 	{
-		string titel, forfatter;
+		string titel, forfatter, kategori;
 		bool udlaant;
 		DateTime udlaansDato, udloebsDato;
 
@@ -29,6 +29,15 @@ namespace Biblioteket.Classes
 			}
 			set{
 				this.forfatter = value;
+			}
+		}
+
+		public string Kategori{
+			get{
+				return this.kategori;
+			}
+			set{
+				this.kategori = value;
 			}
 		}
 

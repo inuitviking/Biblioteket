@@ -50,6 +50,9 @@ namespace Biblioteket
 					"g: Opret bog\n"+
 					"h: Vis liste over lånte bøger på bruger\n"+
 					"i: Udskriv bøger\n"+
+					"j: Opret kategori\n"+
+					"k: Udskriv kategorier\n"+
+					"l: Find kategori\n"+
 					"x: Afslut\n"+
 					lines
 				);
@@ -91,6 +94,18 @@ namespace Biblioteket
 						break;
 					case ConsoleKey.I:
 						result = 'I';
+						quit = true;
+						break;
+					case ConsoleKey.J:
+						result = 'J';
+						quit = true;
+						break;
+					case ConsoleKey.K:
+						result = 'K';
+						quit = true;
+						break;
+					case ConsoleKey.L:
+						result = 'L';
 						quit = true;
 						break;
 					case ConsoleKey.X:
@@ -167,6 +182,19 @@ namespace Biblioteket
 					break;
 				case 'I':
 					Console.WriteLine(bibliotek.HentAlleBoeger());
+					break;
+				case 'J':
+					Console.Write("Skriv kategorinavn: ");
+					string kategoriNavn = Console.ReadLine();
+					Console.WriteLine(bibliotek.OpretKategori(kategoriNavn));
+					break;
+				case 'K':
+					Console.WriteLine(bibliotek.HentAlleKategorier());
+					break;
+				case 'L':
+					Console.Write("Skriv kategorinavn: ");
+					kategoriNavn = Console.ReadLine();
+					Console.WriteLine(bibliotek.HentKategori(kategoriNavn));
 					break;
 				case 'X':
 					Console.Clear();

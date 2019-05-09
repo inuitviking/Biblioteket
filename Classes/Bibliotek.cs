@@ -10,6 +10,7 @@ namespace Biblioteket.Classes
 		Laaner laaner;
 		public List<Laaner> laanerList;
 		public List<Bog> bogList;
+		public List<Categories> kategoriList;
 
 		/// <summary>
 		/// 	This is the class constructor.
@@ -23,6 +24,7 @@ namespace Biblioteket.Classes
 			this.biblioteksNavn = navn;
 			laanerList = new List<Laaner>();
 			bogList = new List<Bog>();
+			kategoriList = new List<Categories>();
 		} // End of Bibliotek
 
 		/// <summary>
@@ -141,6 +143,17 @@ namespace Biblioteket.Classes
 			return result;
 		}// End of OpretLaaner
 
+		public string OpretKategori(string categoryName){
+			string result = "";
+			if(!Categories.CheckCategoryExists(categoryName, this.kategoriList)){
+				this.kategoriList.Add(new Categories(categoryName));
+				result = $"Kategorien \"{categoryName}\" er oprettet.";
+			}else{
+				result = "Kategorien eksisterer allerede!";
+			}
+			return result;
+		}
+
 		/// <summary>
 		/// 	RandomHex creates a random hexadecimal string in a defined number of characters.
 		///		It returns a data type "string" containg a hexadecimal value.
@@ -168,6 +181,29 @@ namespace Biblioteket.Classes
 				boeger += $"{i}: " + bogList[i].ISBN + " - " + bogList[i].Titel + " - " + bogList[i].Forfatter + "\n";
 			}
 			string result = title + boeger + bottom;
+			return result;
+		}
+
+		public string HentAlleKategorier(){
+			string title = "\n++++ Alle Kategorier ++++\n";
+			string bottom = "\n+++++++++++++++++++++";
+			string kategorier = "";
+			for (int i = 0; i < kategoriList.Count; i++){
+				kategorier += $"{i}: " + kategoriList[i].Name + "\n";
+			}
+			string result = title + kategorier + bottom;
+			return result;
+		}
+
+		public string HentKategori(string searchParam){
+			string result = "";
+
+			if(Categories.CheckCategoryExists(searchParam, kategoriList)){
+				Categories category = Categories.ReturnCategory(searchParam, kategoriList);
+				result = category.Name;
+			}else{
+				result = $"Kategorien \"{searchParam}\" eksisterer ikke.";
+			}
 			return result;
 		}
 	}
